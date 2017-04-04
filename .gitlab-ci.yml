@@ -20,4 +20,4 @@ deploy:nupkg:
     - cd src/ProcStub/bin/Release/
     - nuget push -src nuget.org ProcStub.*.nupkg
   tags:
-    - vs2017
+    - nuget-org
