@@ -1,0 +1,21 @@
+build:release:
+  stage: build
+  script:
+    - dotnet restore
+    - dotnet pack -c Release
+  artifacts:
+    paths:
+      - src/ProcStub/bin/Release/ProcStub.*.nupkg
+  tags:
+    - vs2017
+
+deploy:nupkg:
+  stage: deploy
+  when: manual
+  dependencies:
+    - build:release
+  script:
+    - cd src/ProcStub/bin/Release/
+    - nuget push -src nuget.org ProcStub.*.nupkg
+  tags:
+    - vs2017
