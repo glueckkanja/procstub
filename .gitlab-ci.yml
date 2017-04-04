@@ -1,7 +1,9 @@
 build:release:
   stage: build
   script:
+    - cd src
     - dotnet restore
+    - cd ProcStub
     - dotnet pack -c Release
   artifacts:
     paths:
